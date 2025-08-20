@@ -1,0 +1,7 @@
+@host = http://localhost:8080
+@examId = 1
+@userId = 101
+
+### (1) 특정 문항 조회: GET /api/exams/{examId}/questions/{idx}
+GET {{host}}/api/exams/{{examId}}/questions/1
+Accept: application/json
