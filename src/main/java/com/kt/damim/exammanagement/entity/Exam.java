@@ -25,6 +25,9 @@ public class Exam {
     @Column(name = "difficulty")
     private String difficulty;
 
+    @Column(name = "is_ready", nullable = false)
+    private Boolean isReady = false;
+
     @Column(name = "created_by")
     private Long createdBy;
 

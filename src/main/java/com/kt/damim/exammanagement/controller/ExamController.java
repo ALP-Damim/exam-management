@@ -11,43 +11,13 @@ import org.springframework.web.bind.annotation.*;
 public class ExamController {
     
     private final ExamService examService;
+    
 
     /**
-     * Base URL: /api/exams
-     * 문제 조회
-     * GET /api/exams/{examId}/questions/{idx}
-     * 설명: 특정 시험의 idx번째 문제 조회 (idx는 1부터 시작)
-     * 
-     * Path Params
-     * examId(number, int64): 시험 ID
-     * idx(number): 문제 순서(1-based)
-     * Request Body: 없음
-     * Response 200(JSON)
-     * id(number): 문제 ID
-     * position(number): 문제 순서
-     * qtype(string): MCQ | SHORT
-     * body(string): 문제 내용
-     * choices(string[] | null): 객관식 선택지, 단답형은 null
-     * points(number): 배점
-     * 
-     * Error
-     * 400: { timestamp, status, error, message }
-     * 500: { timestamp, status, error, message }
-     * 
-     * 예시 요청
-     *   GET http://localhost:8080/api/exams/1/questions/2
-     *  Accept: application/json
-     * 
-     * 예시 응답(200, MCQ)
-     * {
-        "id": 12,
-        "position": 2,
-        "qtype": "MCQ",
-        "body": "Spring Boot에서 @RestController 어노테이션의 역할은?",
-        "choices": ["A. 데이터베이스 연결", "B. REST API 엔드포인트 제공", "C. 보안 설정", "D. 로깅 설정"],
-        "points": 10.0
-        }
-     * 핵심 요약: 단일 엔드포인트로 인덱스 기반 문제 단건 조회, 본문 없음, 200 시 QuestionDto 반환, 오류는 표준 에러 JSON. 
+     * 시험 문제 단건 조회
+     * @param examId 시험 ID
+     * @param idx 문제 순서(1-based)
+     * @return 문제 정보
      */
     @GetMapping("/{examId}/questions/{idx}")
     public QuestionDto getQuestion(
@@ -55,6 +25,16 @@ public class ExamController {
         @PathVariable int idx
     ) {
         return examService.getQuestion(examId, idx);
+    }
+    
+    /**
+     * 시험 준비 상태 확인
+     * @param examId 시험 ID
+     * @return 준비 상태
+     */
+    @GetMapping("/{examId}/ready")
+    public boolean isExamReady(@PathVariable Long examId) {
+        return examService.isExamReady(examId);
     }
 }
 

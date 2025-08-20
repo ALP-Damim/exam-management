@@ -42,6 +42,7 @@ public class DataInitializer implements CommandLineRunner {
         Exam exam = new Exam();
         exam.setName("2024년 중간고사");
         exam.setDifficulty("중");
+        exam.setIsReady(true); // 시험을 준비 완료 상태로 설정
         exam.setCreatedBy(1L);
         exam.setCreatedAt(Instant.now());
         exam = examRepository.save(exam);

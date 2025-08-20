@@ -4,6 +4,7 @@ CREATE TABLE IF NOT EXISTS exams (
                                      class_id    BIGINT,
                                      name        TEXT NOT NULL,
                                      difficulty  TEXT,
+                                     is_ready    BOOLEAN NOT NULL DEFAULT FALSE,
                                      created_by  BIGINT,
                                      created_at  TIMESTAMPTZ NOT NULL DEFAULT now()
     );

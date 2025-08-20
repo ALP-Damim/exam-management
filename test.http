@@ -1,7 +1,28 @@
 @host = http://localhost:8080
 @examId = 1
+@examIdNotReady = 2
 @userId = 101
 
-### (1) 특정 문항 조회: GET /api/exams/{examId}/questions/{idx}
+### (1) 시험 준비 상태 확인: GET /api/exams/{examId}/ready
+GET {{host}}/api/exams/{{examId}}/ready
+Accept: application/json
+
+### (2) 준비되지 않은 시험 상태 확인
+GET {{host}}/api/exams/{{examIdNotReady}}/ready
+Accept: application/json
+
+### (3) 존재하지 않는 시험 상태 확인
+GET {{host}}/api/exams/999/ready
+Accept: application/json
+
+### (4) 특정 문항 조회: GET /api/exams/{examId}/questions/{idx}
 GET {{host}}/api/exams/{{examId}}/questions/1
+Accept: application/json
+
+### (5) 준비되지 않은 시험에서 문항 조회 시도 (400 에러 예상)
+GET {{host}}/api/exams/{{examIdNotReady}}/questions/1
+Accept: application/json
+
+### (6) 존재하지 않는 시험에서 문항 조회 시도 (400 에러 예상)
+GET {{host}}/api/exams/999/questions/1
 Accept: application/json
