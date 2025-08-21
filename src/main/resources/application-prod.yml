@@ -2,7 +2,7 @@
 spring:
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: ${DB_URL:jdbc:postgresql://team02-postgresql.postgres.database.azure.com:5432/prod_exam?sslmode=require}
+    url: ${DB_URL:jdbc:postgresql://team02-postgresql.postgres.database.azure.com:5432/dev_exam?sslmode=require}
     username: ${DB_USERNAME:alp_team2}
     password: ${DB_PASSWORD}
 

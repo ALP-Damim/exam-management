@@ -1,4 +1,5 @@
-@host = http://localhost:8080
+#@host = http://localhost:8080
+@host = https://exam-management-hxayanddbggnfxan.koreacentral-01.azurewebsites.net
 @examId = 1
 @examIdNotReady = 2
 @userId = 101

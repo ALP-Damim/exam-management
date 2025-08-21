@@ -3,7 +3,7 @@ spring:
     name: exam-management
 
   profiles:
-    active: dev
+    active: prod #dev
 
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
