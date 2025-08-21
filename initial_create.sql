@@ -29,6 +29,9 @@ CREATE TABLE IF NOT EXISTS submissions (
                                            submitted_at TIMESTAMPTZ NOT NULL DEFAULT now(),
     total_score  NUMERIC(8,2) NOT NULL DEFAULT 0 CHECK (total_score >= 0),
     feedback     TEXT,
+    feedback_status TEXT NOT NULL DEFAULT 'PENDING',
+    feedback_requested_at TIMESTAMPTZ,
+    feedback_retry_count INT NOT NULL DEFAULT 0,
     PRIMARY KEY (exam_id, user_id),
     FOREIGN KEY (exam_id) REFERENCES exams(exam_id) ON DELETE CASCADE
     );
