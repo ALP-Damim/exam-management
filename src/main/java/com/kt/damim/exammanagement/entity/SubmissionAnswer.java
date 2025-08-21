@@ -5,7 +5,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import java.math.BigDecimal;
-import java.util.Objects;
 
 @Entity
 @Table(name = "submission_answers")
@@ -32,4 +31,7 @@ public class SubmissionAnswer {
 
     @Column(name = "score", nullable = false)
     private BigDecimal score = BigDecimal.ZERO;
+
+    @Column(name = "solving_time")
+    private Integer solvingTime; // 초 단위로 저장
 }

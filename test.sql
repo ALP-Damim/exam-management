@@ -8,11 +8,11 @@ CASCADE;
 
 -- 테스트용 시험 데이터 생성
 -- isReady가 true인 시험 (시험 ID: 1)
-INSERT INTO exams (exam_id, class_id, name, difficulty, is_ready, created_by, created_at) 
+INSERT INTO exams (exam_id, session_id, name, difficulty, is_ready, created_by, created_at) 
 VALUES (1, 101, '2024년 중간고사', '중', true, 1, NOW());
 
 -- isReady가 false인 시험 (시험 ID: 2)
-INSERT INTO exams (exam_id, class_id, name, difficulty, is_ready, created_by, created_at) 
+INSERT INTO exams (exam_id, session_id, name, difficulty, is_ready, created_by, created_at) 
 VALUES (2, 101, '2024년 기말고사', '상', false, 1, NOW());
 
 -- 존재하지 않는 시험 ID: 999 (테스트용)

@@ -1,7 +1,7 @@
 -- 1) exams
 CREATE TABLE IF NOT EXISTS exams (
                                      exam_id     BIGINT PRIMARY KEY,
-                                     class_id    BIGINT,
+                                     session_id  BIGINT,
                                      name        TEXT NOT NULL,
                                      difficulty  TEXT,
                                      is_ready    BOOLEAN NOT NULL DEFAULT FALSE,
@@ -39,6 +39,7 @@ CREATE TABLE IF NOT EXISTS submission_answers (
                                                   exam_id     BIGINT NOT NULL,
                                                   user_id     BIGINT NOT NULL,
                                                   answer_text TEXT,
+                                                  solving_time INT,
                                                   is_correct  BOOLEAN NOT NULL DEFAULT FALSE,
                                                   score       NUMERIC(6,2) NOT NULL DEFAULT 0 CHECK (score >= 0),
     PRIMARY KEY (exam_id, user_id, question_id),
