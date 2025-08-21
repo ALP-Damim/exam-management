@@ -59,3 +59,6 @@ SELECT exam_id, name, is_ready FROM exams WHERE exam_id = 999;
 -- 테스트 데이터 정리 (필요시)
 -- DELETE FROM questions WHERE exam_id IN (1, 2);
 -- DELETE FROM exams WHERE exam_id IN (1, 2);
+
+
+--done
