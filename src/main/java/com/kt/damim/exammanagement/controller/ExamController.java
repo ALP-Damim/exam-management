@@ -3,11 +3,15 @@ package com.kt.damim.exammanagement.controller;
 import com.kt.damim.exammanagement.dto.QuestionDto;
 import com.kt.damim.exammanagement.service.ExamService;
 import lombok.RequiredArgsConstructor;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/exams")
 @RequiredArgsConstructor
+@Tag(name = "Exams", description = "시험/문항 조회")
 public class ExamController {
     
     private final ExamService examService;
@@ -19,10 +23,11 @@ public class ExamController {
      * @param idx 문제 순서(1-based)
      * @return 문제 정보
      */
+    @Operation(summary = "시험 문제 단건 조회", description = "특정 시험의 idx번째 문제를 조회합니다. idx는 1부터 시작")
     @GetMapping("/{examId}/questions/{idx}")
     public QuestionDto getQuestion(
-        @PathVariable Long examId,
-        @PathVariable int idx
+        @Parameter(description = "시험 ID") @PathVariable Long examId,
+        @Parameter(description = "문항 순서(1-based)") @PathVariable int idx
     ) {
         return examService.getQuestion(examId, idx);
     }
@@ -32,8 +37,9 @@ public class ExamController {
      * @param examId 시험 ID
      * @return 준비 상태
      */
+    @Operation(summary = "시험 준비 상태 확인", description = "준비 완료 시 true 반환")
     @GetMapping("/{examId}/ready")
-    public boolean isExamReady(@PathVariable Long examId) {
+    public boolean isExamReady(@Parameter(description = "시험 ID") @PathVariable Long examId) {
         return examService.isExamReady(examId);
     }
 }
